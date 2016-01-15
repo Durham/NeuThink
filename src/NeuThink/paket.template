@@ -1,0 +1,23 @@
+type project
+owners
+    Meanotek
+authors 
+    Meanotek
+projectUrl
+    http://github.com/Meanotek/Meanotek-NeuText
+iconUrl
+    https://raw.githubusercontent.com/Meanotek/Meanotek-NeuText/master/docs/files/img/logo.png
+licenseUrl
+    http://github.com/Meanotek/Meanotek-NeuText/blob/master/LICENSE.txt
+requireLicenseAcceptance
+    false
+copyright
+    Copyright 2015
+tags
+    deep-learning natural-language-processing
+summary
+    Deep learning library for text processing
+description
+    Neural network library developed by Meanotek and focused on deep learning for text processing
+
+
