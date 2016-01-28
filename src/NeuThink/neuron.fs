@@ -47,7 +47,7 @@ module Neuron =
     // networks 
     /// Base class for all neural networks, 
     /// no support for recurrent layers
-    type FeedForwardNetwork()   =
+    type BasicNetwork()   =
      let layers = new ResizeArray<NeuralLayer>()
      let mutable input_index = 0
      let weights_map = new ResizeArray<int*int>()
@@ -451,8 +451,8 @@ module Neuron =
 
     ///neural network class with support for recurrent layers
     ///can be used both for implementing feed forward and recurrent NNs
-    type RecurrentNetwork()   =
-     inherit FeedForwardNetwork()
+    type GeneralNetwork()   =
+     inherit BasicNetwork()
  
      member this.Forward_buffer i = 
       this.setStep i
@@ -648,7 +648,7 @@ module Neuron =
    
 
     type BackwardRecurrentNetwork ()   =
-     inherit RecurrentNetwork()
+     inherit GeneralNetwork()
  
      override this.ForwardPass  (inputs:IInputProvider) (indexes:int array) (cur_index:int) =
       let mutable ind = cur_index
@@ -717,7 +717,7 @@ module Neuron =
      let cnn_output_size = 16
 
      let recurrent_net = 
-      let network = new RecurrentNetwork()
+      let network = new GeneralNetwork()
       network.AddRecurrentLayer(context_size,input_size+cnn_output_size,[|(1)|],true,0)
      //network.AddTanhLayer(output_size,context_size,[|(-1)|],false,1)
       network.AddSoftMaxLayer(output_size,context_size,[|(-1)|],false,1)
@@ -725,7 +725,7 @@ module Neuron =
       network 
   
      let convnet = 
-      let network = new RecurrentNetwork()
+      let network = new GeneralNetwork()
       //Console.WriteLine(input_size)
   
       network.AddCNNLayer(80*input_size,input_size,input_size,[|1|],true,0,activation_relU) //1 input + 4 hidden buffer
@@ -1059,7 +1059,7 @@ module Neuron =
      let mutable backprop_buffer = [|[|0.0|];[|0.0|]|]
 
      let forward_net =
-      let network = new RecurrentNetwork()
+      let network = new GeneralNetwork()
       if dropout then
        //network.AddNoiseLayer(input_size,input_size,[|(1)|],true,0.003,0)
       // network.AddRecurrentLayer(context_size,input_size,1,true )
@@ -1132,7 +1132,7 @@ module Neuron =
        network
   
      let top_network   =
-       let network = new RecurrentNetwork()
+       let network = new GeneralNetwork()
        if dropout then
        // network.AddDropOutLayer(context_size*2,context_size* 2,1,true)
        // network.AddSoftMaxLayer(output_size,context_size*2,(-1),false) 
