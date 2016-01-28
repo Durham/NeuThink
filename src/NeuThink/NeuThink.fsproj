@@ -16,6 +16,8 @@
     <SccProvider>SAK</SccProvider>
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,7 +27,7 @@
     <OutputPath>bin\Debug</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
-    <DocumentationFile>.\bin\Debug\Meanotek-NeuText.xml</DocumentationFile>
+    <DocumentationFile>.\bin\Debug\NeuThink.xml</DocumentationFile>
     <OtherFlags>--warnon:1182</OtherFlags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -35,16 +37,10 @@
     <OutputPath>bin\Release</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
-    <DocumentationFile>.\bin\Release\Meanotek-NeuText.xml</DocumentationFile>
+    <DocumentationFile>.\bin\Release\NeuThink.xml</DocumentationFile>
     <OtherFlags>--warnon:1182</OtherFlags>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MathNet.Numerics">
-      <HintPath>..\..\..\..\FSCL\FSCL-FSCL.Runtime-168fae3\bin\MathNet.Numerics.dll</HintPath>
-    </Reference>
-    <Reference Include="MathNet.Numerics.FSharp">
-      <HintPath>..\..\..\..\FSCL\FSCL-FSCL.Runtime-168fae3\bin\MathNet.Numerics.FSharp.dll</HintPath>
-    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -85,5 +81,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Import Project="..\..\.paket\paket.targets" />
 </Project>

@@ -160,8 +160,11 @@ module NeuronTraining =
        i <- 0
 
 
-    let MomentumSGD num_iters (network:ITrainableNetwork) (inputs:IInputProvider) (outputs:IOutputProvider) (indexes:int array) (start_alpha:float) (callback : (ITrainableNetwork -> unit) option) =
-
+    let MomentumSGD num_iters (network:ITrainableNetwork) (inputs:IInputProvider) (outputs:IOutputProvider) (start_alpha:float) (indexes_inp:int array option) (callback : (ITrainableNetwork -> unit) option) =
+      let mutable indexes = [|0|]
+      match indexes_inp with 
+       | Some(x) -> indexes <- x
+       | None -> indexes <- Array.init (inputs.Length) (fun _ -> 1)
       let mutable new_error = 0.0
       let mutable prev_error = 100000000.0
       let mutable i = 0
